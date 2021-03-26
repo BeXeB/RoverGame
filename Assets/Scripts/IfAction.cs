@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeatAction : Action
+public class IfAction : Action
 {
-    [SerializeField] int times;
-    [SerializeField] List<Action> actionsToRepeat;
+    [SerializeField] Sensor sensor;
+    [SerializeField] List<Action> trueActions;
+    [SerializeField] List<Action> falseActions;
     RoverMovement player;
 
     private void Start()
@@ -20,9 +21,17 @@ public class RepeatAction : Action
     IEnumerator ActionBehaviour()
     {
         running = true;
-        for (int i = 0; i < times; i++)
+        if (sensor.evaluate())
         {
-            foreach (Action action in actionsToRepeat)
+            foreach (Action action in trueActions)
+            {
+                action.PerformAction();
+                yield return new WaitUntil(() => !action.running);
+            }
+        }
+        else
+        {
+            foreach (Action action in falseActions)
             {
                 action.PerformAction();
                 yield return new WaitUntil(() => !action.running);
