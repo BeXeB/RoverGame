@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ActionUI : MonoBehaviour
 {
-    [SerializeField] GameObject ActionPrefab;
+    public bool inSlot;
+    public Action action;
 }

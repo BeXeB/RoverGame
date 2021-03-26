@@ -22,6 +22,11 @@ public class Dragable : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     {
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
+        if (eventData.pointerDrag.GetComponent<ActionUI>().inSlot)
+        {
+            ActionManager.instance.RemoveAction(eventData.pointerDrag.GetComponent<ActionUI>().action);
+            eventData.pointerDrag.GetComponent<ActionUI>().inSlot = false;
+        }
     }
     public void OnEndDrag(PointerEventData eventData)
     {

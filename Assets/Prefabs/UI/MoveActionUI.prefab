@@ -806,3 +806,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionPrefab: {fileID: 5908846683503511072, guid: 957b2d6906d995942bf399454a9f38cc, type: 3}
+  inputField: {fileID: 1493096046906254814}

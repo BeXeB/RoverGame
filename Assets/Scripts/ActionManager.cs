@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ActionManager : MonoBehaviour
 {
+    public static ActionManager instance;
     [SerializeField] List<Action> actionsToPerform;
     RoverMovement player;
     bool performing;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -19,6 +25,16 @@ public class ActionManager : MonoBehaviour
         {
             PerformActions();
         }
+    }
+
+    public void AddAction(Action action)
+    {
+        actionsToPerform.Add(action);
+    }
+
+    public void RemoveAction(Action action)
+    {
+        actionsToPerform.Remove(action);
     }
 
     public void PerformActions()
