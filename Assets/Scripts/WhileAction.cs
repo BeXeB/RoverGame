@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeatAction : Action
+public class WhileAction : Action
 {
-    [SerializeField] int times;
+    [SerializeField] Sensor sensor;
     [SerializeField] List<Action> actionsToRepeat;
     RoverMovement player;
 
@@ -20,7 +20,7 @@ public class RepeatAction : Action
     IEnumerator ActionBehaviour()
     {
         running = true;
-        for (int i = 0; i < times; i++)
+        while (sensor.evaluate())
         {
             foreach (Action action in actionsToRepeat)
             {
