@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class RoverMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    [SerializeField] float rotateSpeed;
+    [SerializeField] float moveSpeed = 1f;
+    [SerializeField] float rotateSpeed = 1f;
     public bool runningRoutine;
 
     public void Move(int amount)
@@ -12,7 +12,6 @@ public class RoverMovement : MonoBehaviour
         if (!runningRoutine)
         {
             Vector3 dest = transform.position + transform.forward * amount;
-            print(dest);
             StartCoroutine(MovementBehaviour(dest));
         }
     }
@@ -23,14 +22,6 @@ public class RoverMovement : MonoBehaviour
         {
             Quaternion desiredRotation = Quaternion.LookRotation(Quaternion.AngleAxis(ammount, transform.up) * transform.forward);
             StartCoroutine(RotateBehaviour(desiredRotation));
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Move(1);
         }
     }
 
