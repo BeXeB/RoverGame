@@ -44,21 +44,20 @@ public class MapManager : MonoBehaviour
                         mapInstance[zi, xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
                         break;
                     case 1:
-                        mapInstance[zi, xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                        mapInstance[zi, xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
                         break;
                     case 2:
-                        mapInstance[zi, xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                        mapInstance[zi, xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
                         break;
                     case 3:
-                        mapInstance[zi, xi] = Instantiate(holePrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                        mapInstance[zi, xi] = Instantiate(holePrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
                         break;
                     default:
-                        mapInstance[zi, xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                        mapInstance[zi, xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
                         break;
 
                 }
             }
-
         }
     }
 }
