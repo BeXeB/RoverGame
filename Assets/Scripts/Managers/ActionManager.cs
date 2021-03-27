@@ -19,7 +19,6 @@ public class ActionManager : MonoBehaviour
         player = RoverManager.instance.rover.GetComponent<RoverMovement>();
     }
 
-    //rewrite these two with indexes
     public void AddAction(Action action, int slotIndex)
     {
         actionsToPerform.Add(action);
