@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeatAction : Action
+public class ForAction : Action
 {
     public int times;
     [SerializeField] List<Action> actionsToRepeat;
@@ -12,6 +12,12 @@ public class RepeatAction : Action
     {
         player = RoverManager.instance.player.GetComponent<RoverMovement>();
     }
+
+    public void AddAction(Action action)
+    {
+        actionsToRepeat.Add(action);
+    }
+
     public override void PerformAction()
     {
         StartCoroutine(ActionBehaviour());

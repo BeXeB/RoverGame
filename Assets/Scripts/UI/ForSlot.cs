@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ActionSlot : MonoBehaviour, IDropHandler
+public class ForSlot : MonoBehaviour
 {
     public int slotIndex;
     bool used;
@@ -21,7 +21,7 @@ public class ActionSlot : MonoBehaviour, IDropHandler
                 actionUI.inSlot = true;
                 actionUI.slotIndex = slotIndex;
                 //ActionManager.instance.AddAction(go.GetComponent<ActionUI>().action, slotIndex);
-                SlotManager.instance.AddSlot();
+                ((ForActionUI)actionUI).AddSlot();
             }
         }
     }
