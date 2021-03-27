@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ActionListButton : MonoBehaviour
+public class ToggleButton : MonoBehaviour
 {
     [SerializeField] Transform listTransform;
 
