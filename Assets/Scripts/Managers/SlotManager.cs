@@ -36,6 +36,7 @@ public class SlotManager : MonoBehaviour
     {
         GameObject go = slots[index].gameObject;
         slots.Remove(slots[index]);
+        slots[index].NullOut();
         Destroy(go);
         SlotsChanged();
     }

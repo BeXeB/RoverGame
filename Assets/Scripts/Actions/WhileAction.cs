@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WhileAction : Action
 {
-    [SerializeField] Sensor sensor;
+    public Sensor sensor;
     [SerializeField] List<Action> actionsToRepeat;
     RoverMovement player;
 
@@ -12,6 +12,13 @@ public class WhileAction : Action
     {
         player = RoverManager.instance.player.GetComponent<RoverMovement>();
     }
+
+    public void AddAction(Action action)
+    {
+        actionsToRepeat.Add(action);
+    }
+
+
     public override void PerformAction()
     {
         StartCoroutine(ActionBehaviour());
