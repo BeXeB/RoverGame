@@ -20,7 +20,7 @@ public class ForSlot : MonoBehaviour
                 actionUI = go.GetComponent<ActionUI>();
                 actionUI.inSlot = true;
                 actionUI.slotIndex = slotIndex;
-                //ActionManager.instance.AddAction(go.GetComponent<ActionUI>().action, slotIndex);
+                //((RepeatAction)action).AddAction(go.GetComponent<ActionUI>().action)
                 ((ForActionUI)actionUI).AddSlot();
             }
         }
