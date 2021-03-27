@@ -7,8 +7,10 @@ public class Slot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
-            eventData.pointerDrag.GetComponent<ActionUI>().inSlot = true;
+            GameObject go = eventData.pointerDrag;
+            go.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+            go.GetComponent<ActionUI>().inSlot = true;
+            ActionManager.instance.AddAction(go.GetComponent<ActionUI>().action);
         }
     }
 }

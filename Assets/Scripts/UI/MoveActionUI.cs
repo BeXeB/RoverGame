@@ -14,7 +14,6 @@ public class MoveActionUI : ActionUI
         if (int.TryParse(inputField.text, out number) && inSlot)
         {
             ((MoveAction)action).amount = number;
-            ActionManager.instance.AddAction(action);
         }
     }
     private void Start()
