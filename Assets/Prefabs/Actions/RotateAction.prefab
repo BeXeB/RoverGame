@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5728038641814724157}
   - component: {fileID: 5728038641814724158}
   m_Layer: 0
-  m_Name: TestRotateAction
+  m_Name: RotateAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   running: 0
-  ammount: 0
+  amount: 90

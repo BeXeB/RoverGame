@@ -63,3 +63,13 @@ crashlytics-build.properties
 
 
 .idea/
+
+*.kra
+
+Assets/icons/alien_sensor.kra.meta
+
+Assets/icons/for.png~
+
+*.png~
+
+Assets/icons/if_icon.png-autosave.kra.meta
