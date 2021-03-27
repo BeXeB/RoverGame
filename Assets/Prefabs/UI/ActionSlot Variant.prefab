@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &139022169399442393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8126619792951052994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdbbfc567aec6e4886d836b82ad66a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotIndex: 0
 --- !u!1001 &807267370357867580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,7 +106,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8931887932788199166, guid: 25cab7daa5c4da142b2135b1eebb7682, type: 3}
       propertyPath: m_Name
-      value: ActionSlot
+      value: ForSlot
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8931887932788199136, guid: 25cab7daa5c4da142b2135b1eebb7682, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 25cab7daa5c4da142b2135b1eebb7682, type: 3}
+--- !u!1 &8126619792951052994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8931887932788199166, guid: 25cab7daa5c4da142b2135b1eebb7682, type: 3}
+  m_PrefabInstance: {fileID: 807267370357867580}
+  m_PrefabAsset: {fileID: 0}
