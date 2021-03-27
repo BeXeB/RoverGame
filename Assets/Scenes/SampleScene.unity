@@ -1981,6 +1981,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1717317226, guid: d28d0b5e10143824d8b1ad47684ef4a8, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1672057618}
+    - target: {fileID: 1717317226, guid: d28d0b5e10143824d8b1ad47684ef4a8, type: 3}
+      propertyPath: hillPrefab
+      value: 
+      objectReference: {fileID: 8085139358778161357, guid: a6660cb5b9a3e364bb51ec546a1490e5, type: 3}
+    - target: {fileID: 1717317226, guid: d28d0b5e10143824d8b1ad47684ef4a8, type: 3}
+      propertyPath: holePrefab
+      value: 
+      objectReference: {fileID: 3916245016812671515, guid: e9c2ee350c0e8754d89039cedf76f475, type: 3}
+    - target: {fileID: 1717317226, guid: d28d0b5e10143824d8b1ad47684ef4a8, type: 3}
+      propertyPath: pathPrefab
+      value: 
+      objectReference: {fileID: 2437888392264091901, guid: 8522da972a329914dbc0c2d69b65f01a, type: 3}
+    - target: {fileID: 1717317226, guid: d28d0b5e10143824d8b1ad47684ef4a8, type: 3}
+      propertyPath: selectedMap
+      value: 
+      objectReference: {fileID: 3337439192907888811, guid: ca82cfbc7ad44d64a88fa65a9ac9e7b0, type: 3}
     - target: {fileID: 3999892193253685736, guid: d28d0b5e10143824d8b1ad47684ef4a8, type: 3}
       propertyPath: slotsParent
       value: 
@@ -2033,6 +2053,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3999892193434767505, guid: d28d0b5e10143824d8b1ad47684ef4a8, type: 3}
+      propertyPath: rover
+      value: 
+      objectReference: {fileID: 1722314799}
     - target: {fileID: 3999892193434767505, guid: d28d0b5e10143824d8b1ad47684ef4a8, type: 3}
       propertyPath: player
       value: 
