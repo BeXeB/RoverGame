@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IDropHandler
+public class ActionSlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] int slotIndex;
     public void OnDrop(PointerEventData eventData)
@@ -11,7 +11,8 @@ public class Slot : MonoBehaviour, IDropHandler
             GameObject go = eventData.pointerDrag;
             go.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
             go.GetComponent<ActionUI>().inSlot = true;
-            ActionManager.instance.AddAction(go.GetComponent<ActionUI>().action);
+            go.GetComponent<ActionUI>().slotIndex = slotIndex;
+            ActionManager.instance.AddAction(go.GetComponent<ActionUI>().action, slotIndex);
         }
     }
 }

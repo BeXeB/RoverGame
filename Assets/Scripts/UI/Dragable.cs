@@ -23,9 +23,10 @@ public class Dragable : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
         GameObject go = eventData.pointerDrag;
-        if (go.GetComponent<ActionUI>().inSlot)
+        ActionUI actionUI = go.GetComponent<ActionUI>();
+        if (actionUI.inSlot)
         {
-            ActionManager.instance.RemoveAction(go.GetComponent<ActionUI>().action);
+            ActionManager.instance.RemoveAction(actionUI.action, actionUI.slotIndex);
             go.GetComponent<ActionUI>().inSlot = false;
         }
     }

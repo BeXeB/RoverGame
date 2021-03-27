@@ -20,12 +20,12 @@ public class ActionManager : MonoBehaviour
     }
 
     //rewrite these two with indexes
-    public void AddAction(Action action)
+    public void AddAction(Action action, int slotIndex)
     {
         actionsToPerform.Add(action);
     }
 
-    public void RemoveAction(Action action)
+    public void RemoveAction(Action action, int slotIndex)
     {
         actionsToPerform.Remove(action);
     }
