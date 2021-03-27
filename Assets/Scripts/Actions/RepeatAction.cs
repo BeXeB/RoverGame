@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RepeatAction : Action
 {
-    [SerializeField] int times;
+    public int times;
     [SerializeField] List<Action> actionsToRepeat;
     RoverMovement player;
 
