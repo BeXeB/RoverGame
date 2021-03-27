@@ -8,7 +8,7 @@ public class MoveAction : Action
 
     private void Start()
     {
-        rover = RoverManager.instance.player.GetComponent<RoverMovement>();
+        rover = RoverManager.instance.rover.GetComponent<RoverMovement>();
     }
 
     public override void PerformAction()

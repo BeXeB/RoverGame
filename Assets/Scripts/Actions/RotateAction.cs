@@ -8,7 +8,7 @@ public class RotateAction : Action
 
     private void Start()
     {
-        player = RoverManager.instance.player.GetComponent<RoverMovement>();
+        player = RoverManager.instance.rover.GetComponent<RoverMovement>();
     }
     public override void PerformAction()
     {
