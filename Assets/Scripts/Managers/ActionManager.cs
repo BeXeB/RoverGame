@@ -19,14 +19,6 @@ public class ActionManager : MonoBehaviour
         player = RoverManager.instance.player.GetComponent<RoverMovement>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PerformActions();
-        }
-    }
-
     //rewrite these two with indexes
     public void AddAction(Action action)
     {
