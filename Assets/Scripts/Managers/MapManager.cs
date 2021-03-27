@@ -4,11 +4,11 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
     [SerializeField] Transform parent;
-    [SerializeField] GameObject pathPrefab;
-    [SerializeField] GameObject holePrefab;
-    [SerializeField] GameObject hillPrefab;
+    [SerializeField] UnityEngine.GameObject pathPrefab;
+    [SerializeField] UnityEngine.GameObject holePrefab;
+    [SerializeField] UnityEngine.GameObject hillPrefab;
     [SerializeField] Map selectedMap;
-    public GameObject[,] mapInstance;
+    public UnityEngine.GameObject[,] mapInstance;
     private void Awake()
     {
         if (!instance)
@@ -25,7 +25,7 @@ public class MapManager : MonoBehaviour
         int[,] map = selectedMap.getMap();
         int z = map.GetLength(0);
         int x = map.GetLength(1);
-        mapInstance = new GameObject[z,x];
+        mapInstance = new UnityEngine.GameObject[z, x];
         for (int zi = 0; zi < z; zi++) 
         {
             for (int xi = 0; xi < x; xi++)

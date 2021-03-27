@@ -11,5 +11,5 @@ public class RoverManager : MonoBehaviour
         }
     }
 
-    public GameObject rover;
+    public UnityEngine.GameObject rover;
 }

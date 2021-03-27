@@ -5,16 +5,16 @@ using UnityEngine;
 public class ActionSlotController : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
-    [SerializeField] Transform parent;
-    private List<ActionSlot> slots;
+    private List<GameObject> slots;
 
     private void Awake()
     {
-        slots = new List<ActionSlot>();
+        slots = new List<GameObject>();
     }
 
-    public void AddSlot(ActionSlot slot)
+    public void AddSlot()
     {
-        slots.Add(slot);
+        GameObject go = Instantiate(prefab, transform.position, transform.rotation, transform);
+        slots.Add(go);
     }
 }
