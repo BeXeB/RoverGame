@@ -1,11 +1,13 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ActionSlot : MonoBehaviour, IDropHandler
+public class ActionSlot : MonoBehaviour
 {
-    public void OnDrop(PointerEventData eventData)
-    {
+    [SerializeField] Image sensorIcon;
+    [SerializeField] Image actionIcon;
 
+    private void Start()
+    {
+        GetComponentInParent<ActionSlotController>().AddSlot(this);
     }
 }
