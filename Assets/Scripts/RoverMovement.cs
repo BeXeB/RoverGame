@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class RoverMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] float rotateSpeed = 1f;
     public bool runningRoutine;
+    GameObject[,] map;
 
     public void Move(int amount)
     {
@@ -28,6 +30,12 @@ public class RoverMovement : MonoBehaviour
     IEnumerator MovementBehaviour(Vector3 dest)
     {
         runningRoutine = true;
+        int x = Convert.ToInt32(Math.Round(dest.x));
+        int z = Convert.ToInt32(Math.Round(dest.z));
+
+        map = MapManager.instance.mapInstance;
+
+        
         while (transform.position != dest)
         {
             transform.position = Vector3.MoveTowards(transform.position, dest, Time.deltaTime * moveSpeed);
