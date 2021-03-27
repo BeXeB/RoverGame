@@ -46,4 +46,9 @@ public class RoverMovement : MonoBehaviour
         }
         runningRoutine = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // here we can handle colliding with terrain good or bad
+    }
 }
