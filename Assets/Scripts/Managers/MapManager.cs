@@ -3,6 +3,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
+    [SerializeField] Transform parent;
     [SerializeField] GameObject pathPrefab;
     [SerializeField] GameObject holePrefab;
     [SerializeField] GameObject hillPrefab;
