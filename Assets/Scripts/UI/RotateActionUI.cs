@@ -11,7 +11,7 @@ public class RotateActionUI : ActionUI
         int number;
         if (int.TryParse(inputField.text, out number) && inSlot)
         {
-            number = (number / 90) * 90;
+            number = Mathf.RoundToInt(number / 90f) * 90;
             inputField.text = number.ToString();
             ((RotateAction)action).amount = number;
         }
