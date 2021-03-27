@@ -9,6 +9,11 @@ public class MapManager : MonoBehaviour
     [SerializeField] GameObject hillPrefab;
     [SerializeField] Map selectedMap;
     public GameObject[,] mapInstance;
+    
+    
+    RoverMovement player;
+
+    
     private void Awake()
     {
         if (!instance)
@@ -21,7 +26,8 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-
+        player = RoverManager.instance.rover.GetComponent<RoverMovement>();
+        
         int[,] map = selectedMap.getMap();
         int z = map.GetLength(0);
         int x = map.GetLength(1);
@@ -32,6 +38,11 @@ public class MapManager : MonoBehaviour
             {
                 switch (map[zi, xi])
                 {
+                    case 0:
+                        Vector3 dest = new Vector3(xi, 0.55f, zi);
+                        player.transform.position = dest;
+                        mapInstance[zi,xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                        break;
                     case 1: 
                         mapInstance[zi,xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
                         break;
