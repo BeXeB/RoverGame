@@ -27,7 +27,7 @@ public class ActionManager : MonoBehaviour
         }
     }
 
-    //rewrite these two
+    //rewrite these two with indexes
     public void AddAction(Action action)
     {
         actionsToPerform.Add(action);

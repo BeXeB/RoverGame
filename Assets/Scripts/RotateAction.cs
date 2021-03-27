@@ -4,7 +4,7 @@ using UnityEngine;
 public class RotateAction : Action
 {
     RoverMovement player;
-    public float ammount;
+    public float amount;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class RotateAction : Action
     IEnumerator ActionBehaviour()
     {
         running = true;
-        player.Rotate(ammount);
+        player.Rotate(amount);
         yield return new WaitUntil(() => !player.runningRoutine);
         running = false;
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class MoveActionUI : ActionUI
+public class RotateActionUI : ActionUI
 {
     [SerializeField] GameObject ActionPrefab;
     [SerializeField] TMP_InputField inputField;
@@ -11,13 +11,13 @@ public class MoveActionUI : ActionUI
         int number;
         if (int.TryParse(inputField.text, out number) && inSlot)
         {
-            ((MoveAction)action).amount = number;
+            ((RotateAction)action).amount = number;
         }
     }
     private void Start()
     {
         inputField.onEndEdit.AddListener(delegate { UpdateAction(); });
         GameObject go = Instantiate(ActionPrefab);
-        action = go.GetComponent<MoveAction>();
+        action = go.GetComponent<RotateAction>();
     }
 }
