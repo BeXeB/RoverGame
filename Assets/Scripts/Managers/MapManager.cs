@@ -9,6 +9,11 @@ public class MapManager : MonoBehaviour
     [SerializeField] GameObject hillPrefab;
     [SerializeField] Map selectedMap;
     public GameObject[,] mapInstance;
+
+
+    RoverMovement player;
+
+
     private void Awake()
     {
         if (!instance)
@@ -21,32 +26,39 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
+        player = RoverManager.instance.rover.GetComponent<RoverMovement>();
 
         int[,] map = selectedMap.getMap();
         int z = map.GetLength(0);
         int x = map.GetLength(1);
-        mapInstance = new GameObject[z,x];
-        for (int zi = 0; zi < z; zi++) 
+        mapInstance = new GameObject[z, x];
+        for (int zi = 0; zi < z; zi++)
         {
             for (int xi = 0; xi < x; xi++)
             {
                 switch (map[zi, xi])
                 {
-                    case 1: 
-                        mapInstance[zi,xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                    case 0:
+                        Vector3 dest = new Vector3(xi, 0.55f, zi);
+                        player.transform.position = dest;
+                        mapInstance[zi, xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
                         break;
-                   case 2: 
-                        mapInstance[zi,xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
-                        break; 
-                    case 3: 
-                        mapInstance[zi,xi] = Instantiate(holePrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                    case 1:
+                        mapInstance[zi, xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                        break;
+                    case 2:
+                        mapInstance[zi, xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                        break;
+                    case 3:
+                        mapInstance[zi, xi] = Instantiate(holePrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
                         break;
                     default:
-                        mapInstance[zi,xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
-                        break; 
-                    
+                        mapInstance[zi, xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward));
+                        break;
+
                 }
             }
 
         }
-    }}
+    }
+}
