@@ -658,7 +658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Move
+  m_text: Move B
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -738,9 +738,9 @@ GameObject:
   - component: {fileID: 8522564217302823089}
   - component: {fileID: 8522564217302823088}
   - component: {fileID: 8522564217302823091}
-  - component: {fileID: 7464281125771378716}
+  - component: {fileID: 7228322285880816506}
   m_Layer: 5
-  m_Name: MoveActionUI
+  m_Name: MoveBackwardActionUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,7 +793,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &7464281125771378716
+--- !u!114 &7228322285880816506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8522564217302823094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9663ea730afa99741991c63748c7b7d8, type: 3}
+  m_Script: {fileID: 11500000, guid: c957ff32f193e7a49ac7d217288c2c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inSlot: 0

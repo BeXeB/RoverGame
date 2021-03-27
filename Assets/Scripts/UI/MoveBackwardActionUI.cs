@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class MoveActionUI : ActionUI
+public class MoveBackwardActionUI : ActionUI
 {
     [SerializeField] GameObject ActionPrefab;
     [SerializeField] TMP_InputField inputField;
@@ -11,7 +11,7 @@ public class MoveActionUI : ActionUI
         int number;
         if (int.TryParse(inputField.text, out number) && inSlot)
         {
-            ((MoveAction)action).amount = number;
+            ((MoveAction)action).amount = number * -1;
         }
     }
     private void Start()
