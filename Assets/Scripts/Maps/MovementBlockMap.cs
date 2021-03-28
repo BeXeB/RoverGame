@@ -8,7 +8,7 @@ public class MovementBlockMap : Map
     {
         int[,] map = new int[1,10]
         {
-            {0, 1, 1, 1, 2, 1, 1, 1, 1, 1},
+            {0, 1, 1, 1, 1, 1, 1, 1, 1, 3},
         };
         return map;
     }

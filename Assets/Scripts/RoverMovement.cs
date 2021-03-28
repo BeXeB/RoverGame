@@ -7,7 +7,7 @@ public class RoverMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] float rotateSpeed = 1f;
     public bool runningRoutine;
-    GameObject[,] map;
+    int[,] map;
 
     public void Move(int amount)
     {
@@ -33,15 +33,26 @@ public class RoverMovement : MonoBehaviour
         int x = Convert.ToInt32(Math.Round(dest.x));
         int z = Convert.ToInt32(Math.Round(dest.z));
 
-        map = MapManager.instance.mapInstance;
+        map = MapManager.instance.selectedMap.getMap();
 
-        
-        while (transform.position != dest)
+        if (map.GetLength(0) <= z || map.GetLength(1) <= x || map[z, x] == 2)
         {
-            transform.position = Vector3.MoveTowards(transform.position, dest, Time.deltaTime * moveSpeed);
-            yield return null;
+            runningRoutine = false;
+
         }
-        runningRoutine = false;
+        else
+        {
+            while (transform.position != dest)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, dest, Time.deltaTime * moveSpeed);
+                yield return null;
+            }
+            if (map[z, x] == 3)
+            {
+                print("dead");
+            }
+            runningRoutine = false;
+        }
     }
 
     IEnumerator RotateBehaviour(Quaternion desiredRotation)

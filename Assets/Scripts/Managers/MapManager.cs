@@ -7,7 +7,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] GameObject pathPrefab;
     [SerializeField] GameObject holePrefab;
     [SerializeField] GameObject hillPrefab;
-    [SerializeField] Map selectedMap;
+    [SerializeField] public Map selectedMap;
     public GameObject[,] mapInstance;
 
 
