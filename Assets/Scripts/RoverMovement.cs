@@ -34,8 +34,8 @@ public class RoverMovement : MonoBehaviour
         int z = Convert.ToInt32(Math.Round(dest.z));
 
         map = MapManager.instance.selectedMap.getMap();
-
-        if (map.GetLength(0) <= z || map.GetLength(1) <= x || map[z, x] == 2)
+        RoverManager roverManager = RoverManager.instance;
+        if (map.GetLength(0) <= z || map.GetLength(1) <= x || z<0 || x < 0|| map[z, x] == 2)
         {
             runningRoutine = false;
 
@@ -46,10 +46,10 @@ public class RoverMovement : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, dest, Time.deltaTime * moveSpeed);
                 yield return null;
-            }
-            if (map[z, x] == 3)
+            }if (map[z, x] == 3)
             {
-                print("dead");
+                roverManager.GameOver();
+                runningRoutine = false;
             }
             runningRoutine = false;
         }
