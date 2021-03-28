@@ -51,6 +51,10 @@ public class RoverMovement : MonoBehaviour
                 roverManager.GameOver();
                 runningRoutine = false;
             }
+            else if (map[z, x] == 4)
+            {
+                roverManager.Complete();
+            }
             runningRoutine = false;
         }
     }
