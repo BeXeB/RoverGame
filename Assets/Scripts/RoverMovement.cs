@@ -35,10 +35,9 @@ public class RoverMovement : MonoBehaviour
 
         map = MapManager.instance.selectedMap.getMap();
         RoverManager roverManager = RoverManager.instance;
-        if (map.GetLength(0) <= z || map.GetLength(1) <= x || z<0 || x < 0|| map[z, x] == 2)
+        if (map.GetLength(0) <= z || map.GetLength(1) <= x || z < 0 || x < 0 || map[z, x] == 2) //change this so it works with more than 1 movement
         {
             runningRoutine = false;
-
         }
         else
         {
@@ -46,7 +45,8 @@ public class RoverMovement : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, dest, Time.deltaTime * moveSpeed);
                 yield return null;
-            }if (map[z, x] == 3)
+            }
+            if (map[z, x] == 3)
             {
                 roverManager.GameOver();
                 runningRoutine = false;
