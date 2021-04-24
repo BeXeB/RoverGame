@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class IfAction : Action
 {
-    [SerializeField] Sensor sensor;
+    public Sensor sensor;
+    public bool invertSensor;
     [SerializeField] List<Action> trueActions;
     [SerializeField] List<Action> falseActions;
     RoverMovement player;

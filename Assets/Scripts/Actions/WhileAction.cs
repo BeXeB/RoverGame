@@ -5,6 +5,7 @@ using UnityEngine;
 public class WhileAction : Action
 {
     public Sensor sensor;
+    public bool invertSensor;
     [SerializeField] List<Action> actionsToRepeat;
     RoverMovement player;
 

@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf3937ad8e867e4c95a498f17f76a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 1cfdf2fe9d73065f0806cd6945846845, type: 3}
+  type: 4
   running: 0
   sensor: {fileID: 863355951569219396, guid: 33f29334448d3157fb209b5d6cc773fa, type: 3}
   trueActions:
