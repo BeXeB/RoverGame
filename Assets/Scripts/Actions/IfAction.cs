@@ -22,7 +22,7 @@ public class IfAction : Action
     IEnumerator ActionBehaviour()
     {
         running = true;
-        if (sensor.evaluate())
+        if (sensor.evaluate() ^ invertSensor)
         {
             foreach (Action action in trueActions)
             {

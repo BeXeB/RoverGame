@@ -14,18 +14,25 @@ public class ActionManager : MonoBehaviour
         instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !performing)
+        {
+            PerformActions();
+        }
+    }
+
     private void Start()
     {
         player = RoverManager.instance.rover.GetComponent<RoverMovement>();
     }
 
-    //rewrite these two with indexes
-    public void AddAction(Action action, int slotIndex)
+    public void AddAction(Action action)
     {
         actionsToPerform.Add(action);
     }
 
-    public void RemoveAction(Action action, int slotIndex)
+    public void RemoveAction(Action action)
     {
         actionsToPerform.Remove(action);
     }

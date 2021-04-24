@@ -28,7 +28,7 @@ public class WhileAction : Action
     IEnumerator ActionBehaviour()
     {
         running = true;
-        while (sensor.evaluate())
+        while (sensor.evaluate() ^ invertSensor)
         {
             foreach (Action action in actionsToRepeat)
             {
