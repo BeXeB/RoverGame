@@ -40,8 +40,8 @@ public class MapManager : MonoBehaviour
                 switch (map[zi, xi])
                 {
                     case 0:
-                        Vector3 dest = new Vector3(xi, 0.55f, zi);
-                        player.transform.position = dest;
+                        Vector3 start = new Vector3(xi, 0.3f, zi);
+                        player.transform.position = start;
                         mapInstance[zi, xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
                         break;
                     case 1:

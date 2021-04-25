@@ -13,8 +13,7 @@ public class RoverMovement : MonoBehaviour
     {
         if (!runningRoutine)
         {
-            Vector3 dest = transform.position + transform.forward * amount;
-            StartCoroutine(MovementBehaviour(dest));
+            StartCoroutine(MovementBehaviour(amount));
         }
     }
 
@@ -27,36 +26,40 @@ public class RoverMovement : MonoBehaviour
         }
     }
 
-    IEnumerator MovementBehaviour(Vector3 dest)
+    IEnumerator MovementBehaviour(int amount)
     {
         runningRoutine = true;
-        int x = Convert.ToInt32(Math.Round(dest.x));
-        int z = Convert.ToInt32(Math.Round(dest.z));
+        Vector3 finalDest = transform.position + transform.forward * amount;
+        while (transform.position != finalDest)
+        {
+            Vector3 dest = transform.position + transform.forward * (amount / Mathf.Abs(amount));
+            int x = Convert.ToInt32(Math.Round(dest.x));
+            int z = Convert.ToInt32(Math.Round(dest.z));
 
-        map = MapManager.instance.selectedMap.getMap();
-        RoverManager roverManager = RoverManager.instance;
-        if (map.GetLength(0) <= z || map.GetLength(1) <= x || z < 0 || x < 0 || map[z, x] == 2) //change this so it works with more than 1 movement
-        {
-            runningRoutine = false;
+            map = MapManager.instance.selectedMap.getMap();
+            RoverManager roverManager = RoverManager.instance;
+            if (!(map.GetLength(0) <= z || map.GetLength(1) <= x || z < 0 || x < 0 || map[z, x] == 2))
+            {
+                while (transform.position != dest)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, dest, Time.deltaTime * moveSpeed);
+                    yield return null;
+                }
+                if (map[z, x] == 3)
+                {
+                    roverManager.GameOver();
+                }
+                else if (map[z, x] == 4)
+                {
+                    roverManager.Complete();
+                }
+            }
+            else
+            {
+                break;
+            }
         }
-        else
-        {
-            while (transform.position != dest)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, dest, Time.deltaTime * moveSpeed);
-                yield return null;
-            }
-            if (map[z, x] == 3)
-            {
-                roverManager.GameOver();
-                runningRoutine = false;
-            }
-            else if (map[z, x] == 4)
-            {
-                roverManager.Complete();
-            }
-            runningRoutine = false;
-        }
+        runningRoutine = false;
     }
 
     IEnumerator RotateBehaviour(Quaternion desiredRotation)

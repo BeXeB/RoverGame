@@ -61,7 +61,7 @@ public class ActionOptionsUI : MonoBehaviour
     void MoveForwardInputProcess(TMP_InputField input)
     {
         bool intNumber = int.TryParse(input.text, out int result);
-        if (intNumber)
+        if (intNumber && result > 0)
         {
             ((MoveAction)currentAction).amount = result;
         }
@@ -85,7 +85,7 @@ public class ActionOptionsUI : MonoBehaviour
     void MoveBackwardInputProcess(TMP_InputField input)
     {
         bool intNumber = int.TryParse(input.text, out int result);
-        if (intNumber)
+        if (intNumber && result > 0)
         {
             ((MoveAction)currentAction).amount = result * -1;
         }
@@ -208,7 +208,7 @@ public class ActionOptionsUI : MonoBehaviour
         {
             ((IfAction)currentAction).sensor = sensor;
         }
-        if (currentAction.type == ActionType.While)
+        else if (currentAction.type == ActionType.While)
         {
             ((WhileAction)currentAction).sensor = sensor;
         }
