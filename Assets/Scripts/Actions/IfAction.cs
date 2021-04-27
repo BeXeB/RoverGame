@@ -14,6 +14,27 @@ public class IfAction : Action
     {
         player = RoverManager.instance.rover.GetComponent<RoverMovement>();
     }
+
+    public void AddTrueAction(Action action)
+    {
+        trueActions.Add(action);
+    }
+
+    public void AddTrueActions(List<Action> actions)
+    {
+        trueActions = actions;
+    }
+
+    public void AddFalseAction(Action action)
+    {
+        falseActions.Add(action);
+    }
+
+    public void AddFalseActions(List<Action> actions)
+    {
+        falseActions = actions;
+    }
+
     public override void PerformAction()
     {
         StartCoroutine(ActionBehaviour());
@@ -22,7 +43,7 @@ public class IfAction : Action
     IEnumerator ActionBehaviour()
     {
         running = true;
-        if (sensor.evaluate() ^ invertSensor)
+        if (sensor.Evaluate() ^ invertSensor)
         {
             foreach (Action action in trueActions)
             {

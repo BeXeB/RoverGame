@@ -13,6 +13,11 @@ public class ForAction : Action
         player = RoverManager.instance.rover.GetComponent<RoverMovement>();
     }
 
+    public void AddActions(List<Action> actions)
+    {
+        actionsToRepeat = actions;
+    }
+
     public void AddAction(Action action)
     {
         actionsToRepeat.Add(action);

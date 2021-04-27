@@ -14,9 +14,8 @@ public class ActionSlotController : MonoBehaviour //actions Parentre
         contentSizeFitter = GetComponent<ContentSizeFitter>();
     }
 
-    private void Update() // gets called every frame
+    private void Update()
     {
-        //needs better solution ASAP
         contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.MinSize;
     }

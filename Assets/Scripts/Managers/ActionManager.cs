@@ -14,14 +14,6 @@ public class ActionManager : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !performing)
-        {
-            PerformActions();
-        }
-    }
-
     private void Start()
     {
         player = RoverManager.instance.rover.GetComponent<RoverMovement>();
@@ -30,6 +22,11 @@ public class ActionManager : MonoBehaviour
     public void AddAction(Action action)
     {
         actionsToPerform.Add(action);
+    }
+
+    public void AddActions(List<Action> actions)
+    {
+        actionsToPerform = actions;
     }
 
     public void RemoveAction(Action action)
@@ -43,6 +40,12 @@ public class ActionManager : MonoBehaviour
         {
             StartCoroutine(PerformActionsBehaviour());
         }
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+        performing = false;
     }
 
     IEnumerator PerformActionsBehaviour()

@@ -11,6 +11,8 @@ public class ActionOptionsUI : MonoBehaviour
     [SerializeField] TMP_Text actionTypeText;
     [SerializeField] TMP_InputField amountInput;
     [SerializeField] Toggle invertSensorToggle;
+    [SerializeField] Image sensorIcon;
+    [SerializeField] Sprite defaultSensorIcon;
     Action currentAction;
 
     private void Awake()
@@ -155,6 +157,8 @@ public class ActionOptionsUI : MonoBehaviour
         actionTypeText.text = "If";
         amountOptionsUI.SetActive(false);
         sensorOptionsUI.SetActive(true);
+        Sprite currentSensorIcon = ((WhileAction)currentAction).sensor?.icon;
+        sensorIcon.sprite = currentSensorIcon ? currentSensorIcon : defaultSensorIcon;
         invertSensorToggle.onValueChanged.RemoveAllListeners();
         invertSensorToggle.onValueChanged.AddListener(delegate { IfToggleProcess(invertSensorToggle); });
     }
@@ -193,6 +197,8 @@ public class ActionOptionsUI : MonoBehaviour
         actionTypeText.text = "While";
         amountOptionsUI.SetActive(false);
         sensorOptionsUI.SetActive(true);
+        Sprite currentSensorIcon = ((WhileAction)currentAction).sensor?.icon;
+        sensorIcon.sprite = currentSensorIcon ? currentSensorIcon : defaultSensorIcon;
         invertSensorToggle.onValueChanged.RemoveAllListeners();
         invertSensorToggle.onValueChanged.AddListener(delegate { WhileToggleProcess(invertSensorToggle); });
     }
@@ -204,6 +210,7 @@ public class ActionOptionsUI : MonoBehaviour
 
     public void SetSensor(Sensor sensor)
     {
+        sensorIcon.sprite = sensor.icon;
         if (currentAction.type == ActionType.If)
         {
             ((IfAction)currentAction).sensor = sensor;

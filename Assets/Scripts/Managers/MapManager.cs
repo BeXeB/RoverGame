@@ -1,18 +1,22 @@
 using UnityEngine;
+using Cinemachine;
 
 public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
     [SerializeField] Transform parent;
+    [SerializeField] GameObject finishPrefab;
     [SerializeField] GameObject pathPrefab;
     [SerializeField] GameObject holePrefab;
     [SerializeField] GameObject hillPrefab;
-    [SerializeField] GameObject finishPrefab;
-    [SerializeField] public Map selectedMap;
+    public Map selectedMap;
+    [SerializeField] GameObject targetGroup;
     public GameObject[,] mapInstance;
+    private Vector3 roverStartPosition;
+    private Quaternion roverStartRotation;
 
 
-    RoverMovement player;
+    Transform rover;
 
 
     private void Awake()
@@ -23,13 +27,16 @@ public class MapManager : MonoBehaviour
         }
     }
 
-
+    public void ResetMap()
+    {
+        rover.position = roverStartPosition;
+        rover.rotation = roverStartRotation;
+    }
 
     private void Start()
     {
-        player = RoverManager.instance.rover.GetComponent<RoverMovement>();
-
-        int[,] map = selectedMap.getMap();
+        rover = RoverManager.instance.rover.transform;
+        int[,] map = selectedMap.GetMap();
         int z = map.GetLength(0);
         int x = map.GetLength(1);
         mapInstance = new GameObject[z, x];
@@ -37,29 +44,39 @@ public class MapManager : MonoBehaviour
         {
             for (int xi = 0; xi < x; xi++)
             {
+                GameObject go = null;
                 switch (map[zi, xi])
-                {
-                    case 0:
+                {   
+                    case (int)TileType.StartTile:
                         Vector3 start = new Vector3(xi, 0.3f, zi);
-                        player.transform.position = start;
-                        mapInstance[zi, xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                        rover.position = start;
+                        roverStartPosition = start;
+                        roverStartRotation = rover.rotation;
+                        go = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                        mapInstance[zi, xi] = go;
                         break;
-                    case 1:
-                        mapInstance[zi, xi] = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                    case (int)TileType.FinishTile:
+                        go = Instantiate(finishPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                        mapInstance[zi, xi] = go;
                         break;
-                    case 2:
-                        mapInstance[zi, xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                    case (int)TileType.PathTile:
+                        go = Instantiate(pathPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                        mapInstance[zi, xi] = go;
                         break;
-                    case 3:
-                        mapInstance[zi, xi] = Instantiate(holePrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
-                        break; 
-                    case 4:
-                        mapInstance[zi, xi] = Instantiate(finishPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                    case (int)TileType.HillTile:
+                        go = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                        mapInstance[zi, xi] = go;
+                        break;
+                    case (int)TileType.HoleTile:
+                        go = Instantiate(holePrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
+                        mapInstance[zi, xi] = go;
                         break;
                     default:
-                        mapInstance[zi, xi] = Instantiate(hillPrefab, new Vector3(xi, 0f, zi), Quaternion.LookRotation(Vector3.forward), parent);
                         break;
-
+                }
+                if (go != null)
+                {
+                    targetGroup.GetComponent<CinemachineTargetGroup>().AddMember(go.transform, 1f, 2f);
                 }
             }
         }

@@ -19,6 +19,11 @@ public class WhileAction : Action
         actionsToRepeat.Add(action);
     }
 
+    public void AddActions(List<Action> actions)
+    {
+        actionsToRepeat = actions;
+    }
+
 
     public override void PerformAction()
     {
@@ -28,7 +33,7 @@ public class WhileAction : Action
     IEnumerator ActionBehaviour()
     {
         running = true;
-        while (sensor.evaluate() ^ invertSensor)
+        while (sensor.Evaluate() ^ invertSensor)
         {
             foreach (Action action in actionsToRepeat)
             {

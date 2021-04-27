@@ -36,20 +36,20 @@ public class RoverMovement : MonoBehaviour
             int x = Convert.ToInt32(Math.Round(dest.x));
             int z = Convert.ToInt32(Math.Round(dest.z));
 
-            map = MapManager.instance.selectedMap.getMap();
+            map = MapManager.instance.selectedMap.GetMap();
             RoverManager roverManager = RoverManager.instance;
-            if (!(map.GetLength(0) <= z || map.GetLength(1) <= x || z < 0 || x < 0 || map[z, x] == 2))
+            if (!(map.GetLength(0) <= z || map.GetLength(1) <= x || z < 0 || x < 0 || map[z, x] == (int)TileType.HillTile))
             {
                 while (transform.position != dest)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, dest, Time.deltaTime * moveSpeed);
                     yield return null;
                 }
-                if (map[z, x] == 3)
+                if (map[z, x] == (int)TileType.HoleTile)
                 {
                     roverManager.GameOver();
                 }
-                else if (map[z, x] == 4)
+                else if (map[z, x] == (int)TileType.FinishTile)
                 {
                     roverManager.Complete();
                 }
