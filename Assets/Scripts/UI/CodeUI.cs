@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CodeUI : MonoBehaviour
 {
@@ -11,25 +12,23 @@ public class CodeUI : MonoBehaviour
         instance = this;
     }
 
-    public delegate void OnRemainingActionsChanged();
-    public OnRemainingActionsChanged onRemainingActionsChangedCallback;
-
 
     public int maxActions;
     public int remainingActions;
     [SerializeField] private Transform actionSlotParent;
+    [SerializeField] TMP_Text remainingText;
     private ActionManager actionManager;
 
     public void IncreaseRemainingAction()
     {
         remainingActions++;
-        onRemainingActionsChangedCallback?.Invoke();
+        remainingText.text = remainingActions.ToString();
     }
 
     public void DecreaseRemainingActions()
     {
         remainingActions--;
-        onRemainingActionsChangedCallback?.Invoke();
+        remainingText.text = remainingActions.ToString();
     }
 
     private void Start()
@@ -37,6 +36,7 @@ public class CodeUI : MonoBehaviour
         actionManager = ActionManager.instance;
         maxActions = MapManager.instance.selectedMap.GetMaxActions();
         remainingActions = maxActions;
+        remainingText.text = remainingActions.ToString();
     }
 
     public void Play()

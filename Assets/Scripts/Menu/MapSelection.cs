@@ -3,8 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class MapSelection : MonoBehaviour
 {
-    public void StartMap(int index)
+    public static MapSelection instance;
+
+    private void Awake()
     {
-        SceneManager.LoadScene(index);
+        instance = this;
+    }
+    public Map map;
+    public void StartMap()
+    {
+        SceneManager.LoadScene(1);
     }
 }
