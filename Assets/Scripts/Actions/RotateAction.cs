@@ -12,7 +12,8 @@ public class RotateAction : Action
     }
     public override void PerformAction()
     {
-        StartCoroutine(ActionBehaviour());
+        routine = StartCoroutine(ActionBehaviour());
+        ActionManager.instance.runningRoutines.Add(routine);
     }
 
     IEnumerator ActionBehaviour()
@@ -21,5 +22,6 @@ public class RotateAction : Action
         player.Rotate(amount);
         yield return new WaitUntil(() => !player.runningRoutine);
         running = false;
+        ActionManager.instance.runningRoutines.Remove(routine);
     }
 }

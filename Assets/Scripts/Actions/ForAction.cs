@@ -13,6 +13,11 @@ public class ForAction : Action
         player = RoverManager.instance.rover.GetComponent<RoverMovement>();
     }
 
+    public void AddActions(List<Action> actions)
+    {
+        actionsToRepeat = actions;
+    }
+
     public void AddAction(Action action)
     {
         actionsToRepeat.Add(action);
@@ -20,7 +25,13 @@ public class ForAction : Action
 
     public override void PerformAction()
     {
-        StartCoroutine(ActionBehaviour());
+        routine = StartCoroutine(ActionBehaviour());
+        ActionManager.instance.runningRoutines.Add(routine);
+    }
+
+    public List<Action> GetActions()
+    {
+        return actionsToRepeat;
     }
 
     IEnumerator ActionBehaviour()
@@ -35,5 +46,6 @@ public class ForAction : Action
             }
         }
         running = false;
+        ActionManager.instance.runningRoutines.Remove(routine);
     }
 }

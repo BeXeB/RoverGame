@@ -19,16 +19,27 @@ public class WhileAction : Action
         actionsToRepeat.Add(action);
     }
 
+    public void AddActions(List<Action> actions)
+    {
+        actionsToRepeat = actions;
+    }
+
 
     public override void PerformAction()
     {
-        StartCoroutine(ActionBehaviour());
+        routine = StartCoroutine(ActionBehaviour());
+        ActionManager.instance.runningRoutines.Add(routine);
+    }
+
+    public List<Action> GetActions()
+    {
+        return actionsToRepeat;
     }
 
     IEnumerator ActionBehaviour()
     {
         running = true;
-        while (sensor.evaluate())
+        while (sensor.Evaluate() ^ invertSensor)
         {
             foreach (Action action in actionsToRepeat)
             {
@@ -37,5 +48,6 @@ public class WhileAction : Action
             }
         }
         running = false;
+        ActionManager.instance.runningRoutines.Remove(routine);
     }
 }

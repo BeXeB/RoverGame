@@ -46,8 +46,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 1cfdf2fe9d73065f0806cd6945846845, type: 3}
   type: 4
   running: 0
-  sensor: {fileID: 863355951569219396, guid: 33f29334448d3157fb209b5d6cc773fa, type: 3}
-  trueActions:
-  - {fileID: 5728038641814724158, guid: 2c91ef4318c53184ba321e6a5058660f, type: 3}
-  falseActions:
-  - {fileID: 5908846683503511074, guid: 957b2d6906d995942bf399454a9f38cc, type: 3}
+  sensor: {fileID: 0}
+  invertSensor: 0
+  trueActions: []
+  falseActions: []

@@ -13,7 +13,8 @@ public class MoveAction : Action
 
     public override void PerformAction()
     {
-        StartCoroutine(ActionBehaviour());
+        routine = StartCoroutine(ActionBehaviour());
+        ActionManager.instance.runningRoutines.Add(routine);
     }
 
     IEnumerator ActionBehaviour()
@@ -22,5 +23,6 @@ public class MoveAction : Action
         rover.Move(amount);
         yield return new WaitUntil(() => !rover.runningRoutine);
         running = false;
+        ActionManager.instance.runningRoutines.Remove(routine);
     }
 }

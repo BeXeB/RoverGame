@@ -12,9 +12,7 @@ public class RoverManager : MonoBehaviour
         }
     }
 
-    bool ended;
-    public GameObject gameOverUI;
-    public GameObject clearUI;
+    public bool ended;
 
     public GameObject rover;
 
@@ -23,7 +21,8 @@ public class RoverManager : MonoBehaviour
         if (!ended)
         {
             ended = true;
-            gameOverUI.SetActive(true);
+            GameOverUI.instance.SetActive();
+            ActionManager.instance.Stop();
         }
     }
 
@@ -32,7 +31,8 @@ public class RoverManager : MonoBehaviour
         if (!ended)
         {
             ended = true;
-            clearUI.SetActive(true);
+            ClearUI.instance.SetActive();
+            ActionManager.instance.Stop();
         }
     }
 }
