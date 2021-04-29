@@ -7,7 +7,8 @@ public class ActionManager : MonoBehaviour
     public static ActionManager instance;
     [SerializeField] List<Action> actionsToPerform;
     RoverMovement player;
-    bool performing;
+    public bool performing;
+    public List<Coroutine> runningRoutines = new List<Coroutine>();
 
     private void Awake()
     {
@@ -17,6 +18,40 @@ public class ActionManager : MonoBehaviour
     private void Start()
     {
         player = RoverManager.instance.rover.GetComponent<RoverMovement>();
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+        foreach (Coroutine routine in runningRoutines)
+        {
+            if (routine != null)
+                StopCoroutine(routine);
+        }
+        ResetActions(actionsToPerform);
+        player.runningRoutine = false;
+        performing = false;
+    }
+
+    private void ResetActions(List<Action> actions)
+    {
+        foreach (Action action in actions)
+        {
+            action.running = false;
+            if (action is WhileAction)
+            {
+                ResetActions(((WhileAction)action).GetActions());
+            }
+            else if (action is ForAction)
+            {
+                ResetActions(((ForAction)action).GetActions());
+            }
+            else if (action is IfAction)
+            {
+                ResetActions(((IfAction)action).GetTrueActions());
+                ResetActions(((IfAction)action).GetFalseActions());
+            }
+        }
     }
 
     public void AddAction(Action action)
@@ -40,12 +75,6 @@ public class ActionManager : MonoBehaviour
         {
             StartCoroutine(PerformActionsBehaviour());
         }
-    }
-
-    public void Stop()
-    {
-        StopAllCoroutines();
-        performing = false;
     }
 
     IEnumerator PerformActionsBehaviour()

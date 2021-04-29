@@ -25,7 +25,13 @@ public class ForAction : Action
 
     public override void PerformAction()
     {
-        StartCoroutine(ActionBehaviour());
+        routine = StartCoroutine(ActionBehaviour());
+        ActionManager.instance.runningRoutines.Add(routine);
+    }
+
+    public List<Action> GetActions()
+    {
+        return actionsToRepeat;
     }
 
     IEnumerator ActionBehaviour()
@@ -40,5 +46,6 @@ public class ForAction : Action
             }
         }
         running = false;
+        ActionManager.instance.runningRoutines.Remove(routine);
     }
 }

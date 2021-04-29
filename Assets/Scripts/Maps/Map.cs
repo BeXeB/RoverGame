@@ -9,18 +9,22 @@ public class Map : ScriptableObject
     //3 = hill prefab
     //4 = hole prefab
     //5 = alien prefab
+
     public int maxActions;
     public int roverRotation;
+    public int alienRotation;
     public int x, z;
     public string mapString;
     private int[,] map;
     private void GetMapFromString()
     {
+        roverRotation %= 4;
+        alienRotation %= 4;
         map = new int[x, z];
-        string[] rows = mapString.Split('/');
+        string[] rows = mapString.Split('\n');
         for (int i = 0; i < rows.Length; i++)
         {
-            string[] tiles = rows[i].Split(',');
+            string[] tiles = rows[i].Split('|');
             for (int j = 0; j < tiles.Length; j++)
             {
                 map[i, j] = int.TryParse(tiles[j], out int result) ? result : -1;
@@ -30,10 +34,8 @@ public class Map : ScriptableObject
 
     public int[,] GetMap()
     {
-        if (map == null)
-        {
-            GetMapFromString();
-        }
+
+        GetMapFromString();
         return map;
     }
 

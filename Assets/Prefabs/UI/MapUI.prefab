@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4118506235220532370}
   - component: {fileID: 4118506235220532365}
   m_Layer: 5
-  m_Name: Map 1
+  m_Name: MapUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,6 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19469af4aa3e0f54980fa36c373070d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxActions: 0
+  roverRotation: 0
+  alienRotation: 0
+  levelNo: 
+  text: {fileID: 4118506235405572747}
   mapString: 3,3,3/3,0,3/3,2,3/3,1,3/3,3,3
 --- !u!1 &4118506235405572745
 GameObject:

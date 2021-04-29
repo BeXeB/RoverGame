@@ -37,7 +37,18 @@ public class IfAction : Action
 
     public override void PerformAction()
     {
-        StartCoroutine(ActionBehaviour());
+        routine = StartCoroutine(ActionBehaviour());
+        ActionManager.instance.runningRoutines.Add(routine);
+    }
+
+    public List<Action> GetTrueActions()
+    {
+        return trueActions;
+    }
+
+    public List<Action> GetFalseActions()
+    {
+        return falseActions;
     }
 
     IEnumerator ActionBehaviour()
@@ -60,5 +71,6 @@ public class IfAction : Action
             }
         }
         running = false;
+        ActionManager.instance.runningRoutines.Remove(routine);
     }
 }

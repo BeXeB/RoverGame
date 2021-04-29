@@ -15,7 +15,7 @@ public class HoleSensor : Sensor
         Vector3 coordinatesVector3 = rover.position + rover.forward * 1;
         int x = Convert.ToInt32(Math.Round(coordinatesVector3.x));
         int z = Convert.ToInt32(Math.Round(coordinatesVector3.z));
-        if (currentMap[z , x] == 4)
+        if (currentMap[-z , x] == (int)TileType.HoleTile)
         {
             return true;
         }

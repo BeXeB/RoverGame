@@ -19,7 +19,10 @@ public class GameOverUI : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        MapManager.instance.ResetMap();
+        RoverManager.instance.ended = false;
+        ButtonsUI.instance.ResetButtons();
+        ui.gameObject.SetActive(false);
     }
 
     public void MainMenu()

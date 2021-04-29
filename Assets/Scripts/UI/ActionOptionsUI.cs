@@ -157,7 +157,7 @@ public class ActionOptionsUI : MonoBehaviour
         actionTypeText.text = "If";
         amountOptionsUI.SetActive(false);
         sensorOptionsUI.SetActive(true);
-        Sprite currentSensorIcon = ((WhileAction)currentAction).sensor?.icon;
+        Sprite currentSensorIcon = ((IfAction)currentAction).sensor?.icon;
         sensorIcon.sprite = currentSensorIcon ? currentSensorIcon : defaultSensorIcon;
         invertSensorToggle.onValueChanged.RemoveAllListeners();
         invertSensorToggle.onValueChanged.AddListener(delegate { IfToggleProcess(invertSensorToggle); });
