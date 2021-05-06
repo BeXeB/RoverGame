@@ -3,18 +3,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Map")]
 public class Map : ScriptableObject
 {
-
-    //1 = finish prefab
-    //2 = path prefab
-    //3 = hill prefab
-    //4 = hole prefab
-    //5 = alien prefab
+    //0 = void
+    //1 = start
+    //2 = finish prefab
+    //3 = path prefab
+    //4 = hill prefab
+    //5 = hole prefab
 
     public int maxActions;
     public int roverRotation;
     public int alienRotation;
+    public bool testing;
     public int x, z;
-    public string mapString;
+    [TextArea(3,15)]public string mapString;
     private int[,] map;
     private void GetMapFromString()
     {
@@ -27,7 +28,7 @@ public class Map : ScriptableObject
             string[] tiles = rows[i].Split('|');
             for (int j = 0; j < tiles.Length; j++)
             {
-                map[i, j] = int.TryParse(tiles[j], out int result) ? result : -1;
+                map[i, j] = int.TryParse(tiles[j], out int result) ? (result) : 0;
             }
         }
     }
@@ -45,4 +46,4 @@ public class Map : ScriptableObject
     }
 }
 
-public enum TileType { StartTile, FinishTile, PathTile, HillTile, HoleTile }
+public enum TileType {Void ,StartTile, FinishTile, PathTile, HillTile, HoleTile }

@@ -30,6 +30,7 @@ public class MapUI : MonoBehaviour
         int z = tile.Length;
         map.x = x;
         map.z = z;
+        map.testing = false;
         MapSelection.instance.StartMap();
     }
 }
